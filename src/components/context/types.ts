@@ -10,6 +10,10 @@ interface User {
 interface AuthContextType {
   user: User | null;
   setUser: Dispatch<SetStateAction<User | null>>;
+  login: (email: string) => Promise<void>;
+  logout: () => Promise<void>;
+  loading: boolean;
+  message: object;
 }
 
 export type { User, AuthContextType };
