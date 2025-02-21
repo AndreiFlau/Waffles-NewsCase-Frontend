@@ -23,6 +23,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   async function login(email: string) {
+    setLoading(true);
     try {
       const response = await fetch(`${API_URL}/login`, {
         method: "POST",

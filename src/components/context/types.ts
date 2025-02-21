@@ -7,6 +7,11 @@ interface User {
   admin: boolean;
 }
 
+interface UserData {
+  streak: number;
+  newsletterHistory: object;
+}
+
 interface AuthContextType {
   user: User | null;
   setUser: Dispatch<SetStateAction<User | null>>;
@@ -16,4 +21,11 @@ interface AuthContextType {
   message: object;
 }
 
-export type { User, AuthContextType };
+interface UserContextType {
+  userData: UserData | null;
+  jwtToken: string;
+  loading: boolean;
+  message: object;
+}
+
+export type { User, AuthContextType, UserContextType, UserData };
