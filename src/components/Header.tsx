@@ -28,11 +28,12 @@ function Header() {
   return (
     <header>
       <div className="flex items-center">
-        <div className="text-black-500">
-          <h1>☕ News</h1>
+        <div className="text-black-500 bg-[#FFCE04] rounded-2xl p-4">
+          <h1>☕ The News</h1>
         </div>
         {user && (
-          <div className="ml-auto gap-3 flex">
+          <div className="ml-auto gap-3 flex items-center">
+            <h3>{user.email}</h3>
             <Button onClick={logoutFunc}>Log out</Button>
             <Button onClick={handleClick}>{user.admin && !clicked ? "User" : "Dashboard"}</Button>
           </div>

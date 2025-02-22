@@ -46,20 +46,46 @@ function User() {
   if (loading) {
     return (
       <section>
-        <h1>User</h1>
         <p>Loading...</p>
       </section>
     );
   }
 
   return (
-    <section>
-      <h1>User</h1>
-      <h1>{quote}</h1>
-      {newsletter.map((item) => {
-        return <div key={item.id}>{item.newsletterId}</div>;
-      })}
-      <h3>{streak?.currentStreak}</h3>
+    <section className="container mx-auto px-4 grid grid-cols-2 gap-10">
+      <div className="mt-4 mb-8 col-span-full">
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <blockquote className="text-xl italic text-gray-800">{quote}</blockquote>
+        </div>
+      </div>
+
+      <div className="mb-8 row-start-2 h-full">
+        {loading ? (
+          <div className="p-6  bg-gray-50 flex items-center justify-center transition-all duration-300">
+            <p className="text-gray-500 animate-pulse">Loading...</p>
+          </div>
+        ) : (
+          <div className="space-y-2 p-4 bg-gray-50 rounded-lg">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Newsletters Lidas:</h2>
+            <div className="space-y-2">
+              {newsletter.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="flex items-center justify-between p-3 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
+                >
+                  <span className="text-lg font-medium text-gray-600 w-12">{index + 1}</span>
+                  <span className="text-gray-700 flex-1">{item.newsletterId}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="max-w-md mx-auto p-6 bg-green-50 rounded-lg shadow-md text-center row-start-2 col-start-2">
+        <h3 className="text-2xl font-bold text-green-700">Você está em uma sequência de {streak?.currentStreak} dias!</h3>
+        <p className="text-sm text-green-600 mt-2">Continue assim, cada dia conta para alcançar seus objetivos!</p>
+      </div>
     </section>
   );
 }

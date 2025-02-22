@@ -75,9 +75,9 @@ function NewsletterStats() {
             </thead>
             <tbody>
               {stats.map((stat) => (
-                <tr key={stat.newsletterId} className="border-t border-gray-200 hover:bg-gray-50">
-                  <td className="px-6 py-3 text-sm text-gray-800">{stat.newsletterId}</td>
-                  <td className="px-6 py-3 text-sm text-gray-800">{stat.timesOpened}</td>
+                <tr key={stat.newsletterId} className="border-t border-gray-200 hover:shadow-md transition-shadow duration-200">
+                  <td className="px-6 py-3 text-sm text-gray-800 ">{stat.newsletterId}</td>
+                  <td className="px-6 py-3 text-sm text-gray-800 ">{stat.timesOpened}</td>
                 </tr>
               ))}
             </tbody>

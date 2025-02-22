@@ -86,7 +86,7 @@ function NewsletterStatsByDate() {
         ) : stats.length > 0 ? (
           <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
             <thead>
-              <tr className="bg-gray-100 text-left">
+              <tr className="bg-gray-100 text-left ">
                 <th className="px-6 py-3 text-sm font-medium text-gray-600">Data</th>
                 <th className="px-6 py-3 text-sm font-medium text-gray-600">Total de Aberturas</th>
               </tr>
@@ -100,7 +100,7 @@ function NewsletterStatsByDate() {
                 });
 
                 return (
-                  <tr key={stat.day} className="border-t border-gray-200 hover:bg-gray-50">
+                  <tr key={stat.day} className="border-t border-gray-200 hover:shadow-md transition-shadow duration-200 ">
                     <td className="px-6 py-3 text-sm text-gray-800">{date}</td>
                     <td className="px-6 py-3 text-sm text-gray-800">{stat.timesOpened}</td>
                   </tr>
