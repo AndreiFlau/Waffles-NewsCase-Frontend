@@ -22,12 +22,19 @@ interface StreakItem {
   userId: number;
 }
 
+const quotes = [
+  "Todo grande progresso começa com pequenos passos. Continue.",
+  "Continue lendo as nossas notícias!",
+  "A disciplina é o caminho para o sucesso.",
+];
+
 function User() {
   const { userData, loading } = useUserData();
   const [streak, setStreak] = useState<StreakItem | null>(loading ? null : (userData?.streak as StreakItem));
   const [newsletter, setNewsletter] = useState<NewsletterItem[]>(
     loading ? [] : (userData?.newsletterHistory as NewsletterItem[])
   );
+  const [quote] = useState(quotes[Math.floor(Math.random() * quotes.length)]);
 
   useEffect(() => {
     if (!loading && userData) {
@@ -48,7 +55,7 @@ function User() {
   return (
     <section>
       <h1>User</h1>
-      <h1>Bora!</h1>
+      <h1>{quote}</h1>
       {newsletter.map((item) => {
         return <div key={item.id}>{item.newsletterId}</div>;
       })}

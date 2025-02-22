@@ -4,9 +4,14 @@ import { useNavigate } from "react-router";
 import { Message } from "../context/types";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
+interface Stats {
+  day: string;
+  timesOpened: number;
+}
+
 function NewsletterStatsByDate() {
   const { jwtToken } = useUserData();
-  const [stats, setStats] = useState([]);
+  const [stats, setStats] = useState<Stats[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<Message>({ message: "", success: false });
   const [selectedDays, setSelectedDays] = useState(7);
@@ -56,8 +61,8 @@ function NewsletterStatsByDate() {
   }, [jwtToken, navigate, selectedDays]);
 
   return (
-    <section>
-      <div className="p-6 rounded-lg shadow-lg bg-white">
+    <section className="h-full">
+      <div className="p-6 rounded-lg shadow-lg bg-white h-full">
         <h1 className="text-2xl font-semibold mb-4">Estatísticas por Período</h1>
 
         {/* Dropdown para escolher o período */}
@@ -87,12 +92,20 @@ function NewsletterStatsByDate() {
               </tr>
             </thead>
             <tbody>
-              {stats.map((stat) => (
-                <tr key={stat.day} className="border-t border-gray-200 hover:bg-gray-50">
-                  <td className="px-6 py-3 text-sm text-gray-800">{stat.day}</td>
-                  <td className="px-6 py-3 text-sm text-gray-800">{stat.timesOpened}</td>
-                </tr>
-              ))}
+              {stats.map((stat) => {
+                const date = new Date(stat.day).toLocaleDateString("pt-BR", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                });
+
+                return (
+                  <tr key={stat.day} className="border-t border-gray-200 hover:bg-gray-50">
+                    <td className="px-6 py-3 text-sm text-gray-800">{date}</td>
+                    <td className="px-6 py-3 text-sm text-gray-800">{stat.timesOpened}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         ) : (

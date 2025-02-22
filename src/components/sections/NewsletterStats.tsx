@@ -4,9 +4,14 @@ import { useNavigate } from "react-router";
 import { Message } from "../context/types";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
+interface Stats {
+  newsletterId: string;
+  timesOpened: number;
+}
+
 function NewsletterStats() {
   const { jwtToken } = useUserData();
-  const [stats, setStats] = useState([]);
+  const [stats, setStats] = useState<Stats[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<Message>({ message: "", success: false });
   const navigate = useNavigate();
@@ -52,8 +57,8 @@ function NewsletterStats() {
   }, [jwtToken, navigate]);
 
   return (
-    <section>
-      <div className="p-6 rounded-lg shadow-lg bg-white">
+    <section className="p-6 rounded-lg shadow-lg bg-white w-full h-full">
+      <div className="h-full">
         <h1 className="text-2xl font-semibold mb-4">Estatísticas de Abertura de Newsletters</h1>
 
         {message.message && !message.success && <p className={`mb-4 text-sm font-medium text-red-600`}>{message.message}</p>}
@@ -61,7 +66,7 @@ function NewsletterStats() {
         {loading ? (
           <p className="text-gray-500 animate-pulse">Carregando estatísticas...</p>
         ) : stats.length > 0 ? (
-          <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+          <table className="min-w-full rounded-lg overflow-hidden h-full">
             <thead>
               <tr className="bg-gray-100 text-left">
                 <th className="px-6 py-3 text-sm font-medium text-gray-600">Newsletter ID</th>

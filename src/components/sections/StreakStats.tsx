@@ -7,9 +7,15 @@ import "chart.js/auto";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
+interface Streak {
+  id: number;
+  streakCategory: string;
+  totalUsers: number;
+}
+
 function StreakStats() {
   const { jwtToken } = useUserData();
-  const [streaks, setStreaks] = useState([]);
+  const [streaks, setStreaks] = useState<Streak[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<Message>({ message: "", success: false });
   const navigate = useNavigate();
@@ -70,7 +76,7 @@ function StreakStats() {
   };
 
   return (
-    <section>
+    <section className="h-full">
       <div className="p-6 rounded-lg shadow-lg bg-white">
         <h1 className="text-2xl font-semibold mb-4">Status do Streak</h1>
 

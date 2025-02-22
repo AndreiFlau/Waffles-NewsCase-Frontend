@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useUserData from "../hooks/useUserData";
 import { useNavigate } from "react-router";
 import { Message } from "../context/types";
-import StatCard from "../ui/statCard";
+import StatCard from "../ui/StatCard";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
 
 function KeyMetrics() {

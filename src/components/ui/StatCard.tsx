@@ -18,7 +18,7 @@ interface StatCardProps extends PropsWithChildren {
 function StatCard({ stat, loading, message, ...props }: StatCardProps) {
   if (loading) {
     return (
-      <div className="p-6 rounded-lg shadow-lg bg-white flex w-48 items-center justify-between" {...props}>
+      <div className="p-6 rounded-lg shadow-lg bg-white flex items-center justify-center gap-10 w-full h-40" {...props}>
         <p className="text-gray-500 animate-pulse">Loading...</p>
       </div>
     );
@@ -26,14 +26,14 @@ function StatCard({ stat, loading, message, ...props }: StatCardProps) {
 
   if (!message.success && message.message) {
     return (
-      <div className="p-6 rounded-lg shadow-lg bg-white flex w-48 items-center justify-between" {...props}>
+      <div className="p-6 rounded-lg shadow-lg bg-white flex items-center justify-center gap-10 w-full h-40" {...props}>
         <p className="text-sm font-medium text-red-600">{message.message}</p>
       </div>
     );
   }
 
   return (
-    <div className="p-6 rounded-lg shadow-lg bg-white flex w-48 items-center justify-between" {...props}>
+    <div className="p-6 rounded-lg shadow-lg bg-white flex items-center justify-center gap-10 w-full h-40" {...props}>
       <span className={`text-2xl ${stat.textColor} ${stat.bgColor} rounded-full h-16 w-16 flex items-center justify-center`}>
         {stat.icon}
       </span>

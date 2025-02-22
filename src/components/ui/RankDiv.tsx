@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import { Message } from "../context/types";
 
 interface Rank {
+  icon: string;
   message: string;
   bgColor: string;
   textColor: string;
@@ -40,9 +41,9 @@ function RankDiv({ rank, streak, spot, email, loading, message, ...props }: Stat
 
   return (
     <div className={`flex items-center justify-between p-2 ${rank.bgColor} rounded-lg`}>
-      <span className={`text-lg font-bold ${rank.textColor}`}>{spot}</span>
+      <span className={`text-lg font-bold ${rank.textColor}`}>{[1, 2, 3].includes(spot) ? rank.icon : spot}</span>
       <span className={`${rank.textColor2}`}>{email}</span>
-      <span className={`${rank.textColor3}`}>{streak} days</span>
+      <span className={`${rank.textColor3}`}>{streak} dias</span>
     </div>
   );
 }

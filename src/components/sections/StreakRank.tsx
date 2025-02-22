@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import useUserData from "../hooks/useUserData";
 import { useNavigate } from "react-router";
 import { Message } from "../context/types";
-import RankDiv from "../ui/rankDiv";
+import RankDiv from "../ui/RankDiv";
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+
+interface Streak {
+  id: number;
+  currentStreak: number;
+  email: string;
+}
 
 function StreakRank() {
   const { jwtToken } = useUserData();
-  const [streakRank, setStreakRank] = useState([]);
+  const [streakRank, setStreakRank] = useState<Streak[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState<Message>({ message: "", success: false });
   const navigate = useNavigate();
@@ -57,6 +63,7 @@ function StreakRank() {
     switch (index) {
       case 0:
         return {
+          icon: "🥇",
           message: "Best Streak!",
           bgColor: "bg-purple-100",
           textColor: "text-purple-700",
@@ -65,6 +72,7 @@ function StreakRank() {
         };
       case 1:
         return {
+          icon: "🥈",
           message: "Top Contender",
           bgColor: "bg-blue-100",
           textColor: "text-blue-700",
@@ -73,6 +81,7 @@ function StreakRank() {
         };
       case 2:
         return {
+          icon: "🥉",
           message: "Rising Star",
           bgColor: "bg-orange-100",
           textColor: "text-orange-700",
@@ -85,7 +94,7 @@ function StreakRank() {
   }
 
   return (
-    <section>
+    <section className="h-full">
       <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4 text-gray-800">Top Streaks</h2>
         <div className="space-y-4">

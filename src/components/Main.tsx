@@ -2,7 +2,7 @@ import { Outlet } from "react-router";
 
 function Main() {
   return (
-    <main>
+    <main className="">
       <Outlet />
     </main>
   );
