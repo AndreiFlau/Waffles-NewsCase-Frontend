@@ -2,8 +2,8 @@ import { PropsWithChildren } from "react";
 import { Message } from "../context/types";
 
 interface Rank {
-  icon: string;
-  message: string;
+  icon?: string;
+  message?: string;
   bgColor: string;
   textColor: string;
   textColor2: string;

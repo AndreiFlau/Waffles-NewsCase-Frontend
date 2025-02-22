@@ -7,7 +7,7 @@ import StreakStats from "../sections/StreakStats";
 function Dashboard() {
   return (
     <section>
-      <div className="grid grid-cols-3 gap-10 mt-10">
+      <div className="grid grid-cols-3 gap-10">
         <div className="col-span-full">
           <KeyMetrics></KeyMetrics>
         </div>

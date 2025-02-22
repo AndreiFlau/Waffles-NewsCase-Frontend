@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useUserData from "../hooks/useUserData";
+import Badges from "../sections/Badges";
 
 interface NewsletterItem {
   id: number;
@@ -52,14 +53,21 @@ function User() {
   }
 
   return (
-    <section className="container mx-auto px-4 grid grid-cols-2 gap-10">
+    <section className="container grid grid-cols-2 gap-10">
       <div className="mt-4 mb-8 col-span-full">
         <div className="bg-white p-6 rounded-lg shadow-lg">
           <blockquote className="text-xl italic text-gray-800">{quote}</blockquote>
         </div>
       </div>
 
-      <div className="mb-8 row-start-2 h-full">
+      <div className=" p-6 bg-green-50 rounded-lg shadow-md text-center row-start-2 col-start-2">
+        <h3 className="text-2xl font-bold text-green-700">Você está em uma sequência de {streak?.currentStreak} dias!</h3>
+        <p className="text-sm text-green-600 mt-2">Continue assim, cada dia conta para alcançar seus objetivos!</p>
+      </div>
+
+      <Badges></Badges>
+
+      <div className="mb-8 row-start-3 col-span-full h-full">
         {loading ? (
           <div className="p-6  bg-gray-50 flex items-center justify-center transition-all duration-300">
             <p className="text-gray-500 animate-pulse">Loading...</p>
@@ -80,11 +88,6 @@ function User() {
             </div>
           </div>
         )}
-      </div>
-
-      <div className="max-w-md mx-auto p-6 bg-green-50 rounded-lg shadow-md text-center row-start-2 col-start-2">
-        <h3 className="text-2xl font-bold text-green-700">Você está em uma sequência de {streak?.currentStreak} dias!</h3>
-        <p className="text-sm text-green-600 mt-2">Continue assim, cada dia conta para alcançar seus objetivos!</p>
       </div>
     </section>
   );

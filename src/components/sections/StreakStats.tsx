@@ -69,8 +69,8 @@ function StreakStats() {
     datasets: [
       {
         data: streaks.map((streak) => streak.totalUsers),
-        backgroundColor: ["#4CAF50", "#FF9800", "#03A9F4", "#E0E0E0"],
-        hoverBackgroundColor: ["#388E3C", "#F57C00", "#0288D1", "#BDBDBD"],
+        backgroundColor: ["#2196F3", "#9C27B0", "#FF5722", "#E0E0E0"],
+        hoverBackgroundColor: ["#1976D2", "#7B1FA2", "#D84315", "#BDBDBD"],
       },
     ],
   };

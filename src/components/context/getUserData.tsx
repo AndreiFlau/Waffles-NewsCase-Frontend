@@ -76,7 +76,7 @@ function UserProvider({ children }: { children: ReactNode }) {
       try {
         const storedUserData = JSON.parse(stored) as UserData;
         setUserData(storedUserData);
-        setJwtToken(storedToken);
+        setJwtToken(storedToken ?? "");
       } catch (err) {
         console.error("Erro ao processar os dados do usuário armazenados:", err);
       }
