@@ -33,9 +33,9 @@ function Login() {
 
   return (
     <section>
-      <h1>Login</h1>
+      <h1>Entre com o seu email</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">Email: </label>
         <input
           placeholder="nome@email.com"
           type="text"

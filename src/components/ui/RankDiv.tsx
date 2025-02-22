@@ -26,7 +26,7 @@ function RankDiv({ rank, streak, spot, email, loading, message, ...props }: Stat
         className="p-6 rounded-lg shadow-md bg-gray-50 flex items-center justify-center transition-all duration-300"
         {...props}
       >
-        <p className="text-gray-500 animate-pulse">Loading...</p>
+        <p className="text-gray-500 animate-pulse">Carregando...</p>
       </div>
     );
   }

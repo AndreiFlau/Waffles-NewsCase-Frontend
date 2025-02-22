@@ -47,7 +47,7 @@ function User() {
   if (loading) {
     return (
       <section>
-        <p>Loading...</p>
+        <p>Carregando...</p>
       </section>
     );
   }
@@ -70,7 +70,7 @@ function User() {
       <div className="mb-8 row-start-3 col-span-full h-full">
         {loading ? (
           <div className="p-6  bg-gray-50 flex items-center justify-center transition-all duration-300">
-            <p className="text-gray-500 animate-pulse">Loading...</p>
+            <p className="text-gray-500 animate-pulse">Carregando...</p>
           </div>
         ) : (
           <div className="space-y-2 p-4 bg-gray-50 rounded-lg">

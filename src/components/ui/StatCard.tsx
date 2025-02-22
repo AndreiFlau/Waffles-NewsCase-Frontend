@@ -19,7 +19,7 @@ function StatCard({ stat, loading, message, ...props }: StatCardProps) {
   if (loading) {
     return (
       <div className="p-6 rounded-lg shadow-lg bg-white flex items-center justify-center gap-10 w-full h-40" {...props}>
-        <p className="text-gray-500 animate-pulse">Loading...</p>
+        <p className="text-gray-500 animate-pulse">Carregando...</p>
       </div>
     );
   }
