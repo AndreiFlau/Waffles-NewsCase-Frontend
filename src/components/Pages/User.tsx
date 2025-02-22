@@ -60,7 +60,7 @@ function User() {
         </div>
       </div>
 
-      <div className=" p-6 bg-green-50 rounded-lg shadow-md text-center row-start-2 col-start-2">
+      <div className=" p-6 bg-green-50 rounded-lg shadow-md text-center row-start-2 col-start-2 flex flex-col justify-center">
         <h3 className="text-2xl font-bold text-green-700">Você está em uma sequência de {streak?.currentStreak} dias!</h3>
         <p className="text-sm text-green-600 mt-2">Continue assim, cada dia conta para alcançar seus objetivos!</p>
       </div>

@@ -10,6 +10,7 @@ import User from "./Pages/User.tsx";
 import { ProtectedRoute } from "./ProtectedRoute.tsx";
 import { AuthProvider } from "./context/auth.tsx";
 import { UserProvider } from "./context/getUserData.tsx";
+import { ProtectedAdminRoute } from "./ProtectedAdminRoute.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -26,7 +27,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               }
             >
               <Route path="/user" element={<User />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route element={<ProtectedAdminRoute />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Route>

@@ -35,7 +35,7 @@ function Header() {
           <div className="ml-auto gap-3 flex items-center">
             <h3>{user.email}</h3>
             <Button onClick={logoutFunc}>Log out</Button>
-            <Button onClick={handleClick}>{user.admin && !clicked ? "User" : "Dashboard"}</Button>
+            {user.admin && <Button onClick={handleClick}>{user.admin && !clicked ? "User" : "Dashboard"}</Button>}
           </div>
         )}
       </div>
