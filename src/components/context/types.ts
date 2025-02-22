@@ -8,8 +8,13 @@ interface User {
 }
 
 interface UserData {
-  streak: number;
+  streak: object;
   newsletterHistory: object;
+}
+
+interface Message {
+  message: string;
+  success: boolean;
 }
 
 interface AuthContextType {
@@ -28,4 +33,4 @@ interface UserContextType {
   message: object;
 }
 
-export type { User, AuthContextType, UserContextType, UserData };
+export type { User, AuthContextType, UserContextType, UserData, Message };

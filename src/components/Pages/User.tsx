@@ -5,7 +5,7 @@ interface NewsletterItem {
   id: number;
   userId: number;
   email: string;
-  newsletterId: number;
+  newsletterId: string;
   openedAt: Date;
   utmSource: string;
   utmMedium: string;
@@ -13,15 +13,26 @@ interface NewsletterItem {
   utmChannel: string;
 }
 
+interface StreakItem {
+  createdAt: Date;
+  currentStreak: number;
+  id: number;
+  longestStreak: number;
+  updatedAt: Date;
+  userId: number;
+}
+
 function User() {
-  const { userData, message, loading } = useUserData();
-  const [streaks, setStreaks] = useState(loading ? 0 : userData?.streak);
-  const [newsletter, setNewsletter] = useState<NewsletterItem[]>(loading ? [] : userData?.newsletterHistory);
+  const { userData, loading } = useUserData();
+  const [streak, setStreak] = useState<StreakItem | null>(loading ? null : (userData?.streak as StreakItem));
+  const [newsletter, setNewsletter] = useState<NewsletterItem[]>(
+    loading ? [] : (userData?.newsletterHistory as NewsletterItem[])
+  );
 
   useEffect(() => {
     if (!loading && userData) {
-      setStreaks(userData.streak ?? 0);
-      setNewsletter(userData.newsletterHistory ?? []);
+      setStreak((userData.streak as StreakItem) ?? {});
+      setNewsletter((userData.newsletterHistory as NewsletterItem[]) ?? []);
     }
   }, [userData, loading]);
 
@@ -37,9 +48,11 @@ function User() {
   return (
     <section>
       <h1>User</h1>
+      <h1>Bora!</h1>
       {newsletter.map((item) => {
         return <div key={item.id}>{item.newsletterId}</div>;
       })}
+      <h3>{streak?.currentStreak}</h3>
     </section>
   );
 }
