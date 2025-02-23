@@ -4,6 +4,7 @@ import Header from "./Header";
 import useAuth from "./hooks/useAuth";
 import Main from "./Main";
 import Button from "./ui/button";
+import { useEffect } from "react";
 
 function App() {
   const { user } = useAuth();
@@ -20,6 +21,12 @@ function App() {
       navigate("/user");
     }
   }
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   return (
     <div className="max-w-6xl mx-auto p-4">
