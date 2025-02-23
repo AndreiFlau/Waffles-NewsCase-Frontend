@@ -20,7 +20,7 @@ interface Message {
 interface AuthContextType {
   user: User | null;
   setUser: Dispatch<SetStateAction<User | null>>;
-  login: (email: string) => Promise<void>;
+  login: (email: string) => Promise<void> | null;
   logout: () => Promise<void>;
   loading: boolean;
   message: object;

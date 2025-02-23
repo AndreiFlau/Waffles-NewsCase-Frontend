@@ -22,7 +22,10 @@ function Login() {
     e.preventDefault();
     setIsDisabled(true);
     try {
-      await login(email);
+      const loginRes = await login(email);
+      if (!loginRes) {
+        throw new Error("Credenciais inválidas");
+      }
     } catch (error) {
       const err = error as Error;
       console.error(`Erro ao logar: ${err} com a mensagem ${message}`);
@@ -38,13 +41,13 @@ function Login() {
         <label htmlFor="email">Email: </label>
         <input
           placeholder="nome@email.com"
-          type="text"
+          type="email"
           id="email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-        />
+        />{" "}
         <Button type="submit" variant={loading ? "disabled" : "primary"} disabled={isDisabled}>
           Log in
         </Button>

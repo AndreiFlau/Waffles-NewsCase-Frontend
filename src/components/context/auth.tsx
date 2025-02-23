@@ -39,15 +39,19 @@ function AuthProvider({ children }: { children: ReactNode }) {
         setMessage({ message: "Logado com sucesso!", success: true });
       } else {
         setMessage({ message: userData.message || "Login falhou. Tente novamente.", success: false });
+        return null;
       }
 
       setUser(userData);
       localStorage.setItem("user", JSON.stringify(userData));
       localStorage.setItem("token", jwtToken);
+
+      return userData;
     } catch (error) {
       const err = error as Error;
       console.error(`Erro ao logar: `, err);
       setMessage({ message: err.message, success: false });
+      return null;
     } finally {
       setLoading(false);
     }
