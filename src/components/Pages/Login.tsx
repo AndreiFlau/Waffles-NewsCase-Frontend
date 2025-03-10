@@ -35,7 +35,7 @@ function Login() {
   }
 
   return (
-    <section className="self-center justify-self-center mr-auto ml-auto">
+    <section className="self-center justify-self-center mr-auto ml-auto mt-auto mb-auto">
       <h1>Entre com o seu email</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email: </label>
