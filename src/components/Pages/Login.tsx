@@ -52,6 +52,9 @@ function Login() {
           Log in
         </Button>
       </form>
+      <p>
+        Use: admin@thenews.digital para login administrativo. <br /> Ou user1@example.com para login de usuário.
+      </p>
       {errorMessage && <div className="text-red-500">{errorMessage}</div>}
     </section>
   );
